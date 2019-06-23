@@ -1,7 +1,0 @@
-name: motd
-version: 1
-author: Combatbob
-main: com.roflobster.motd.motd
-commands:
-  motd:
-    description: Displays a message of the day!

@@ -1,11 +1,4 @@
-/*//////////////////////////////////////////////////////////////////////////
-/   MOTD                                                                   /                                                                                                                          /
-/                                                                          /
-/   Simple plugin for displaying a Message of the Day to joining players   /
-//////////////////////////////////////////////////////////////////////////*/
-
-package com.roflobster.motd;
-
+package me.roflobster.motd;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -17,8 +10,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class motd extends JavaPlugin implements Listener {
-FileConfiguration config = getConfig();
+public class main extends JavaPlugin implements Listener {
+    FileConfiguration config = getConfig();
 
     @Override
     public void onEnable() {

@@ -1,0 +1,4 @@
+name: motd
+version: 1.0
+main: me.roflobster.motd.motd
+api-version: 1.14

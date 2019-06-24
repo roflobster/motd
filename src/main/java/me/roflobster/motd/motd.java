@@ -10,14 +10,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+// Implements Listener for events
 public class motd extends JavaPlugin implements Listener {
     FileConfiguration config = getConfig();
 
+// Registers listener and posts in console that plugin activated
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
     }
 
+// Disables built in player join message in favor of custom one
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
@@ -27,6 +30,7 @@ public class motd extends JavaPlugin implements Listener {
 
     }
 
+// Disables built in player quit message in favor of custom one
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();

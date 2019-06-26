@@ -33,6 +33,7 @@ public class motd extends JavaPlugin implements Listener {
 
     }
 
+
 // Sends Joining player custom message
 // Disables built in player join message in favor of custom one
     @EventHandler

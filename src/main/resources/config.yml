@@ -1,1 +1,3 @@
-playerOnJoin: "This is just a test.  Wee Woo Wee Woo!"
+playerOnJoin: " has joined the server"
+playerJoinMOTD: "Plugins in use: Dynmap (roflobster.duckdns.org:8123) , mcMMO, SimpleElevators, RampenDrills, DiscordSRV"
+playerOnQuit: " is a bitch"

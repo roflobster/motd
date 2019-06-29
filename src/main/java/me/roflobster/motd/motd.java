@@ -2,7 +2,6 @@ package me.roflobster.motd;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,9 +11,14 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.io.File;
 
-// Implements Listener for events
+// Implements Listener for events-
 public class motd extends JavaPlugin implements Listener {
-    //FileConfiguration config = getConfig();
+
+    //Defining Variables from Config.yml
+    String pJoin = this.getConfig().getString("playerOnJoin");
+    String pQuit = this.getConfig().getString("playerOnQuit");
+    String pMOTD = this.getConfig().getString("playerJoinMOTD");
+
 
     public void registerConfig() {
         this.getConfig().options().copyDefaults(true);
@@ -26,20 +30,18 @@ public class motd extends JavaPlugin implements Listener {
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
         this.registerConfig();
-        //config.addDefault("playerOnJoin", "Installed Plugins: mcMMO, SimpleElevators, Dynmap, DiscordSRV, RampenDrills");
 
     }
 
 
+// Sends Joining player custom message
 // Disables built in player join message in favor of custom one
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        String pJoin = this.getConfig().getString("playerOnJoin");
         event.setJoinMessage(null);
-
-        Bukkit.broadcastMessage(ChatColor.YELLOW + (player.getDisplayName() + " has joined the server"));
-        player.sendMessage(pJoin);
+        Bukkit.broadcastMessage(ChatColor.YELLOW + (player.getDisplayName() + pJoin));
+        player.sendMessage(pMOTD);
 
     }
 
@@ -49,7 +51,7 @@ public class motd extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         event.setQuitMessage(null);
 
-        Bukkit.broadcastMessage(ChatColor.YELLOW + (player.getDisplayName() + " has left the server"));
+        Bukkit.broadcastMessage(ChatColor.YELLOW + (player.getDisplayName() + pQuit));
 
     }
 

@@ -5,11 +5,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-
-import java.io.File;
+import java.lang.String;
 
 // Implements Listener for events-
 public class motd extends JavaPlugin implements Listener {
@@ -18,6 +18,8 @@ public class motd extends JavaPlugin implements Listener {
     String pJoin = this.getConfig().getString("playerOnJoin");
     String pQuit = this.getConfig().getString("playerOnQuit");
     String pMOTD = this.getConfig().getString("playerJoinMOTD");
+    String sMOTD = this.getConfig().getString("serverMOTD");
+
 
 
     public void registerConfig() {
@@ -33,6 +35,10 @@ public class motd extends JavaPlugin implements Listener {
 
     }
 
+    @EventHandler
+    public void onServerListPing(ServerListPingEvent event) {
+        event.setMotd(sMOTD);
+    }
 
 // Sends Joining player custom message
 // Disables built in player join message in favor of custom one
@@ -41,7 +47,7 @@ public class motd extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         event.setJoinMessage(null);
         Bukkit.broadcastMessage(ChatColor.YELLOW + (player.getDisplayName() + pJoin));
-        player.sendMessage(pMOTD);
+        player.sendMessage(ChatColor.YELLOW + pMOTD);
 
     }
 
@@ -50,7 +56,6 @@ public class motd extends JavaPlugin implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         event.setQuitMessage(null);
-
         Bukkit.broadcastMessage(ChatColor.YELLOW + (player.getDisplayName() + pQuit));
 
     }

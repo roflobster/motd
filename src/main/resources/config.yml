@@ -1,4 +1,4 @@
 playerOnJoin: " has joined the server"
 playerJoinMOTD: "Plugins in use: Dynmap (roflobster.duckdns.org:8123) , mcMMO, SimpleElevators, RampenDrills, DiscordSRV"
-playerOnQuit: " is a bitch"
-serverMOTD: "This is my Test Server"
+playerOnQuit: " has ragequit"
+serverMOTD: "Welcome to my Paper Server!"
